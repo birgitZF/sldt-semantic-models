@@ -246,7 +246,7 @@
 :essIncidentModerator a samm:Property ;
    samm:preferredName "Incident Moderator"@en ;
    samm:description "Business Partner who moderates the clearing of an ESS incident"@en ;
-   samm:characteristic ext-number:BpnlCharacteristic ;
+   samm:characteristic :EssIncidentModeratorCharacteristic ;
    samm:exampleValue "BPNL1234567890YY" .
 
 :IndustryCharacteristic a samm-c:Enumeration ;
@@ -284,6 +284,12 @@
    samm-c:baseCharacteristic samm-c:Text ;
    samm-c:constraint :ContactMailConstraint .
 
+:EssIncidentModeratorCharacteristic a samm-c:Set ;
+   samm:preferredName "Ess Incident Moderator Characteristic"@en ;
+   samm:description "Business Partner(s) who moderate(s) the clearing of an ESS incident"@en ;
+   samm:dataType xsd:string ;
+   samm-c:elementCharacteristic :BPNLTrait .
+
 :EssOriginatorCoordinatesEntity a samm:Entity ;
    samm:preferredName "ESS Originator Coordinates Entity"@en ;
    samm:description "Entity for geographic coordinates including a longitude and a latitude value."@en ;
@@ -293,6 +299,12 @@
    samm:preferredName "Contact Mail Constraint"@en ;
    samm:description "Regular expression for a contact mail address."@en ;
    samm:value "^[a-zA-Z0-9.!#$%&?*+\\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$" .
+
+:BPNLTrait a samm-c:Trait ;
+   samm:preferredName "BPNL Trait"@en ;
+   samm:description "Trait to ensure data format for BPNL."@en ;
+   samm-c:baseCharacteristic ext-number:BpnlCharacteristic ;
+   samm-c:constraint ext-number:BpnlRegularExpression .
 
 :longitude a samm:Property ;
    samm:preferredName "Longitude"@en ;
